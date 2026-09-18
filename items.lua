@@ -633,4 +633,17 @@ return {
         label = 'Handcuffs',
         weight = 200,
     },
+
+    --rk_billing
+    ['bill_receipt'] = {
+        label = 'Invoice',
+        weight = 50,
+        stack = false,
+        close = true,
+        consume = 0,
+        description = 'An invoice to pay',
+        server = {
+            export = 'rk_billing.useInvoiceItem',
+        },
+    },
 }

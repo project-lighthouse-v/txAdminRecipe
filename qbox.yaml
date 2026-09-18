@@ -88,12 +88,10 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/Renewed-Banking.zip
 
-  - action: download_file
-    path: ./tmp/illenium-appearance.zip
-    url: https://github.com/iLLeniumStudios/illenium-appearance/releases/latest/download/illenium-appearance.zip
-  - action: unzip
-    dest: ./resources/[standalone]
-    src: ./tmp/illenium-appearance.zip
+  - action: download_github
+    dest: ./resources/[standalone]/illenium-appearance
+    ref: main
+    src: https://github.com/RMSCRIPTS-DEV/illenium-appearance
 
   - action: download_github
     dest: ./resources/[standalone]/MugShotBase64
@@ -160,6 +158,9 @@ tasks:
   - action: unzip
     dest: ./resources/[voice]
     src: ./tmp/mm_radio.zip
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
 
   # Downloading Qbox resources
   - action: download_github
@@ -237,7 +238,7 @@ tasks:
   - action: download_github
     dest: ./resources/[qbx]/qbx_garages
     ref: main
-    src: https://github.com/qbox-project/qbx_garages
+    src: https://github.com/project-lighthouse-v/qbx_garages
 
   - action: download_github
     dest: ./resources/[qbx]/qbx_ambulancejob
@@ -257,7 +258,7 @@ tasks:
   - action: download_github
     dest: ./resources/[qbx]/qbx_police
     ref: main
-    src: https://github.com/qbox-project/qbx_police
+    src: https://github.com/project-lighthouse-v/qbx_police
 
   - action: download_github
     dest: ./resources/[qbx]/qbx_properties
@@ -327,7 +328,7 @@ tasks:
   - action: download_github
     dest: ./resources/[qbx]/qbx_cityhall
     ref: main
-    src: https://github.com/qbox-project/qbx_cityhall
+    src: https://github.com/project-lighthouse-v/qbx_cityhall
 
   - action: download_github
     dest: ./resources/[qbx]/qbx_truckrobbery
@@ -381,9 +382,6 @@ tasks:
   - action: query_database
     file: ./resources/[qbx]/qbx_drugs/qbx_drugs.sql
 
-  - action: waste_time # prevent github throttling
-    seconds: 10
-
   - action: download_github
     dest: ./resources/[qbx]/qbx_idcard
     ref: main
@@ -418,6 +416,9 @@ tasks:
     dest: ./resources/[qbx]/qbx_chat_theme
     ref: main
     src: https://github.com/Qbox-project/qbx_chat_theme
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
 
   # OX
   - action: download_file
@@ -475,6 +476,9 @@ tasks:
     ref: main
     src: https://github.com/overextended/ox_fuel
 
+  - action: waste_time # prevent github throttling
+    seconds: 10
+
     # NPWD
   - action: download_file
     path: ./tmp/npwd.zip
@@ -489,11 +493,19 @@ tasks:
   - action: download_github
     dest: ./resources/[npwd]/qbx_npwd
     ref: main
-    src: https://github.com/Qbox-project/qbx_npwd
+    src: https://github.com/project-lighthouse-v/qbx_npwd
+
+  - action: query_database
+    file: ./resources/[npwd]/qbx_npwd/npwd_table_fix.sql
 
   - action: move_path
     src: ./resources/[npwd]/qbx_npwd/config.json
     dest: ./resources/[npwd]/npwd/config.json
+    overwrite: true
+
+  - action: move_path
+    src: ./resources/[npwd]/qbx_npwd/npwd_renewed_weather/weather.lua
+    dest: ./resources/[standalone]/Renewed-Weathersync/server/weather.lua
     overwrite: true
 
   - action: download_file
@@ -511,9 +523,39 @@ tasks:
     src: ./tmp/npwd_qbx_mail.zip
 
   - action: download_github
+    dest: ./resources/[npwd-apps]/npwd_bankingapp
+    ref: main
+    src: https://github.com/kaynegraham/bankingapp
+
+  - action: download_file
+    path: ./tmp/npwd_renewed_weather.zip
+    url: https://github.com/SaharaScripters/npwd_renewed_weather/releases/latest/download/npwd_renewed_weather.zip
+  - action: unzip
+    dest: ./resources/[npwd-apps]
+    src: ./tmp/npwd_renewed_weather.zip
+
+  - action: download_file
+    path: ./tmp/npwd_qbx_services.zip
+    url: https://github.com/SaharaScripters/npwd_qbx_services/releases/latest/download/npwd_qbx_services.zip
+  - action: unzip
+    dest: ./resources/[npwd-apps]
+    src: ./tmp/npwd_qbx_services.zip
+
+  - action: move_path
+    src: ./resources/[npwd]/qbx_npwd/npwd_qbx_services/server.lua
+    dest: ./resources/[npwd-apps]/npwd_qbx_services/config/server.lua
+    overwrite: true
+
+  - action: download_github
     dest: ./resources/[assets]/pillbox
     ref: main
     src: https://github.com/Lorenc95/pillbox
+
+  # External
+  - action: download_github
+    dest: ./resources/[external]/ember-admin
+    ref: main
+    src: https://github.com/ember-studioss/Ember-Admin
 
   # Clean up
   - action: remove_path
