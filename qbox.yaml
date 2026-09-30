@@ -197,7 +197,7 @@ tasks:
   - action: download_github
     dest: ./resources/[qbx]/qbx_vehicleshop
     ref: main
-    src: https://github.com/qbox-project/qbx_vehicleshop
+    src: https://github.com/project-lighthouse-v/qbx_vehicleshop
   - action: query_database
     file: ./resources/[qbx]/qbx_vehicleshop/vehshop.sql
 
@@ -546,16 +546,64 @@ tasks:
     dest: ./resources/[npwd-apps]/npwd_qbx_services/config/server.lua
     overwrite: true
 
+  # Assets
   - action: download_github
     dest: ./resources/[assets]/pillbox
     ref: main
     src: https://github.com/Lorenc95/pillbox
+
+  - action: download_github
+    dest: ./resources/[assets]/car_dealer
+    ref: main
+    src: https://github.com/project-lighthouse-v/car_dealer
+
+  - action: download_github
+    dest: ./resources/[assets]/rflx_beanmachine
+    ref: main
+    src: https://github.com/project-lighthouse-v/rflx_beanmachine
+
+  # Project-Sloth
+  - action: download_github
+    dest: ./resources/[ps]/ps_lib
+    ref: main
+    src: https://github.com/Project-Sloth/ps_lib
+
+  - action: download_github
+    dest: ./resources/[ps]/ps-dispatch
+    ref: main
+    src: https://github.com/Project-Sloth/ps-dispatch
+
+  - action: download_file
+    path: ./tmp/ps-mdt-3.1.4.zip
+    url: https://github.com/Project-Sloth/ps-mdt/releases/download/3.1.4/ps-mdt-3.1.4.zip
+  - action: unzip
+    dest: ./resources/[ps]
+    src: ./tmp/ps-mdt-3.1.4.zip
+  - action: query_database
+    file: ./resources/[ps]/ps-mdt/sql/qbx.sql
+
+  # Izqie
+  - action: download_github
+    dest: ./resources/[iz]/iz_consumable
+    ref: main
+    src: https://github.com/project-lighthouse-v/iz_consumable
+
+  - action: download_github
+    dest: ./resources/[iz]/iz_beanmachinecafe
+    ref: main
+    src: https://github.com/project-lighthouse-v/iz_beanmachinecafe
 
   # External
   - action: download_github
     dest: ./resources/[external]/ember-admin
     ref: main
     src: https://github.com/ember-studioss/Ember-Admin
+
+  - action: download_github
+    dest: ./resources/[external]/Jericho_JCoords
+    ref: main
+    src: https://github.com/Jericho-Script/Jericho_JCoords
+
 
   # Clean up
   - action: remove_path
