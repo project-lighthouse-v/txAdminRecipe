@@ -479,72 +479,19 @@ tasks:
   - action: waste_time # prevent github throttling
     seconds: 10
 
-    # NPWD
-  - action: download_file
-    path: ./tmp/npwd.zip
-    url: https://github.com/project-error/npwd/releases/download/3.16.0/npwd.zip
-  - action: unzip
-    dest: ./resources/[npwd]/
-    src: ./tmp/npwd.zip
-
-  - action: query_database
-    file: ./resources/[npwd]/npwd/import.sql
+  # sd-phone
 
   - action: download_github
-    dest: ./resources/[npwd]/qbx_npwd
+    dest: ./resources/[sd]/sd-phone-props
     ref: main
-    src: https://github.com/project-lighthouse-v/qbx_npwd
-
-  - action: query_database
-    file: ./resources/[npwd]/qbx_npwd/npwd_table_fix.sql
-
-  - action: move_path
-    src: ./resources/[npwd]/qbx_npwd/config.json
-    dest: ./resources/[npwd]/npwd/config.json
-    overwrite: true
-
-  - action: move_path
-    src: ./resources/[npwd]/qbx_npwd/npwd_renewed_weather/weather.lua
-    dest: ./resources/[standalone]/Renewed-Weathersync/server/weather.lua
-    overwrite: true
+    src: https://github.com/Samuels-Development/sd-phone-props
 
   - action: download_file
-    path: ./tmp/npwd_qbx_garages.zip
-    url: https://github.com/Qbox-project/npwd_qbx_garages/releases/latest/download/npwd_qbx_garages.zip
+    path: ./tmp/sd-phone.zip
+    url: https://github.com/Project-Sloth/ps-mdt/releases/latest/download/sd-phone.zip
   - action: unzip
-    dest: ./resources/[npwd-apps]
-    src: ./tmp/npwd_qbx_garages.zip
-
-  - action: download_file
-    path: ./tmp/npwd_qbx_mail.zip
-    url: https://github.com/Qbox-project/npwd_qbx_mail/releases/latest/download/npwd_qbx_mail.zip
-  - action: unzip
-    dest: ./resources/[npwd-apps]
-    src: ./tmp/npwd_qbx_mail.zip
-
-  - action: download_github
-    dest: ./resources/[npwd-apps]/npwd_bankingapp
-    ref: main
-    src: https://github.com/kaynegraham/bankingapp
-
-  - action: download_file
-    path: ./tmp/npwd_renewed_weather.zip
-    url: https://github.com/SaharaScripters/npwd_renewed_weather/releases/latest/download/npwd_renewed_weather.zip
-  - action: unzip
-    dest: ./resources/[npwd-apps]
-    src: ./tmp/npwd_renewed_weather.zip
-
-  - action: download_file
-    path: ./tmp/npwd_qbx_services.zip
-    url: https://github.com/SaharaScripters/npwd_qbx_services/releases/latest/download/npwd_qbx_services.zip
-  - action: unzip
-    dest: ./resources/[npwd-apps]
-    src: ./tmp/npwd_qbx_services.zip
-
-  - action: move_path
-    src: ./resources/[npwd]/qbx_npwd/npwd_qbx_services/server.lua
-    dest: ./resources/[npwd-apps]/npwd_qbx_services/config/server.lua
-    overwrite: true
+    dest: ./resources/[sd]
+    src: ./tmp/sd-phone.zip
 
   # Assets
   - action: download_github
@@ -603,7 +550,6 @@ tasks:
     dest: ./resources/[external]/Jericho_JCoords
     ref: main
     src: https://github.com/Jericho-Script/Jericho_JCoords
-
 
   # Clean up
   - action: remove_path

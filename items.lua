@@ -121,26 +121,6 @@ return {
         weight = 160,
     },
 
-    ['phone'] = {
-        label = 'Phone',
-        weight = 190,
-        stack = false,
-        consume = 0,
-        client = {
-            add = function(total)
-                if total > 0 then
-                    pcall(function() return exports.npwd:setPhoneDisabled(false) end)
-                end
-            end,
-
-            remove = function(total)
-                if total < 1 then
-                    pcall(function() return exports.npwd:setPhoneDisabled(true) end)
-                end
-            end
-        }
-    },
-
     ['mustard'] = {
         label = 'Mustard',
         weight = 500,
@@ -634,7 +614,74 @@ return {
         weight = 200,
     },
 
-    --rk_billing
+    -- Additional items can be added below this line
+
+    --sd-phone
+    ['phone_black'] = {
+        label = 'Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_black' }
+    },
+
+    ['phone_blue'] = {
+        label = 'Blue Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_blue' }
+    },
+
+    ['phone_green'] = {
+        label = 'Green Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_green' }
+    },
+
+    ['phone_orange'] = {
+        label = 'Orange Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_orange' }
+    },
+
+    ['phone_pink'] = {
+        label = 'Pink Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_pink' }
+    },
+
+    ['phone_purple'] = {
+        label = 'Purple Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_purple' }
+    },
+
+    ['phone_red'] = {
+        label = 'Red Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_red' }
+    },
+
+    ['phone_yellow'] = {
+        label = 'Yellow Phone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        server = { export = 'sd-phone.usePhone_yellow' }
+    },
+
+    -- rk_billing
     ['bill_receipt'] = {
         label = 'Invoice',
         weight = 50,
@@ -646,4 +693,115 @@ return {
             export = 'rk_billing.useInvoiceItem',
         },
     },
+
+    -- bean machine caffee
+    -- ingredients
+    ['coffeecup'] = {
+        label = 'Coffee Cup',
+        weight = 10,
+        stack = true
+    },
+    ['coffeebag'] = {
+        label = 'Coffee Beans',
+        weight = 250,
+        stack = true,
+        durability = true,
+        decay = true
+    },
+    ['chocolate_sauce'] = {
+        label = 'Chocolate sauce',
+        weight = 250,
+        stack = true,
+        durability = true,
+        decay = true
+    },
+    ['sprinkles_jar'] = {
+        label = 'Jar of sprinkles',
+        weight = 250,
+        stack = true,
+        durability = true,
+        decay = true
+    },
+    ['milk_carton'] = {
+        label = 'A Carton of Milk',
+        weight = 1000,
+        stack = true,
+        durability = true,
+        decay = true,
+        close = true,
+        consume = 0.5,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_cs_milk_01`, pos = vec3(0.00, 0.00, 0.00), rot = vec3(0.0, 0.0, 0.0) },
+            usetime = 2500,
+            cancel = true,
+            notification = 'You drank some milk'
+        }
+    },
+    ['bean_coffee'] = {
+        label = 'Coffee',
+        weight = 300,
+        stack = false,
+        durability = true,
+        consume = 1,
+        close = true,
+        client = {
+            export = 'iz_consumable.useNormally'
+        },
+        buttons = {
+            {
+                label = 'Drink coffee slowly',
+                action = function(slot)
+                    TriggerEvent(
+                        'iz_consumable:client:useSlowly',
+                        slot
+                    )
+                end
+            }
+        }
+    },
+    ["plain_donut"] = {
+        label = "Plain Donut",
+        weight = 100,
+        stack = true,
+        close = true,
+        client = {
+            image = "plain_donut.png",
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_donut_01`, pos = vec3(0.00, 0.00, 0.00), rot = vec3(0.0, 0.0, 0.0) },
+            usetime = 2500,
+            notification = 'You ate a donut'
+        },
+    },
+    ["choco_donut"] = {
+        label = "Donut with choco frosting",
+        weight = 100,
+        stack = true,
+        close = true,
+        client = {
+            image = "choco_donut.png",
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_donut_01`, pos = vec3(0.00, 0.00, 0.00), rot = vec3(0.0, 0.0, 0.0) },
+            usetime = 2500,
+            notification = 'You ate a chocolate donut'
+        },
+    },
+    ["pink_donut"] = {
+        label = "Donut with pink frosting",
+        weight = 100,
+        stack = true,
+        close = true,
+        client = {
+            image = "pink_donut.png",
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_donut_01`, pos = vec3(0.00, 0.00, 0.00), rot = vec3(0.0, 0.0, 0.0) },
+            usetime = 2500,
+            notification = 'You ate a pink donut'
+        },
+    }
+
 }
