@@ -298,7 +298,7 @@ tasks:
   - action: download_github
     dest: ./resources/[qbx]/qbx_storerobbery
     ref: main
-    src: https://github.com/qbox-project/qbx_storerobbery
+    src: https://github.com/project-lighthouse-v/qbx_storerobbery
 
   - action: download_github
     dest: ./resources/[qbx]/qbx_spawn
@@ -511,21 +511,16 @@ tasks:
 
   # Project-Sloth
   - action: download_github
-    dest: ./resources/[ps]/ps_lib
-    ref: main
-    src: https://github.com/Project-Sloth/ps_lib
-
-  - action: download_github
     dest: ./resources/[ps]/ps-dispatch
     ref: main
     src: https://github.com/Project-Sloth/ps-dispatch
 
   - action: download_file
-    path: ./tmp/ps-mdt-3.1.4.zip
-    url: https://github.com/Project-Sloth/ps-mdt/releases/download/3.1.4/ps-mdt-3.1.4.zip
+    path: ./tmp/ps-mdt-v1.3.0.zip
+    url: https://github.com/LeSiiN/ps-mdt/releases/download/v1.3.0/ps-mdt-v1.3.0.zip
   - action: unzip
     dest: ./resources/[ps]
-    src: ./tmp/ps-mdt-3.1.4.zip
+    src: ./tmp/ps-mdt-v1.3.0.zip
   - action: query_database
     file: ./resources/[ps]/ps-mdt/sql/qbx.sql
 
